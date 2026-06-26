@@ -3,116 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Predictor AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Disease Prediction from Medical Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background overlay for forms -->
     <div class="background-elements">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
-    <main class="container">
-        <header>
-            <h1>Disease Predictor <span class="highlight">AI</span></h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg" style="background-image: url('assets/hero_bg.png');"></div>
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Disease Prediction">Disease Prediction</h1>
+            <h2 class="subtitle-hero">From Medical Data</h2>
             <p>Advanced predictive models using Machine Learning for early detection.</p>
-        </header>
+            <button class="explore-btn" onclick="document.getElementById('models-section').scrollIntoView({behavior: 'smooth'})">Explore Models</button>
+        </div>
+    </section>
 
-        <nav class="disease-selector">
-            <button class="nav-btn active" data-target="breast-cancer">Breast Cancer</button>
-            <button class="nav-btn" data-target="diabetes">Diabetes</button>
-            <button class="nav-btn" data-target="heart-disease">Heart Disease</button>
-        </nav>
+    <!-- 3D Models Selector Section -->
+    <section id="models-section" class="models-section">
+        <div class="section-header">
+            <h2>Select a Predictive Model</h2>
+            <p>Choose an AI model below to begin analysis.</p>
+        </div>
 
-        <section id="breast-cancer" class="disease-form-section active">
-            <h2>Breast Cancer Prediction</h2>
+        <div class="cards-container">
+            <!-- Breast Cancer Card -->
+            <div class="tilt-card" data-target="breast-cancer">
+                <div class="card-content">
+                    <div class="card-img-wrapper">
+                        <img src="assets/icon_cancer.png" alt="Breast Cancer Cells">
+                    </div>
+                    <h3>Breast Cancer</h3>
+                    <p>Cellular feature analysis.</p>
+                </div>
+            </div>
+
+            <!-- Diabetes Card -->
+            <div class="tilt-card" data-target="diabetes">
+                <div class="card-content">
+                    <div class="card-img-wrapper">
+                        <img src="assets/icon_diabetes.png" alt="Diabetes Blood Drop">
+                    </div>
+                    <h3>Diabetes</h3>
+                    <p>Pima Indians clinical data.</p>
+                </div>
+            </div>
+
+            <!-- Heart Disease Card -->
+            <div class="tilt-card" data-target="heart-disease">
+                <div class="card-content">
+                    <div class="card-img-wrapper">
+                        <img src="assets/icon_heart.png" alt="Heart Disease">
+                    </div>
+                    <h3>Heart Disease</h3>
+                    <p>Cleveland clinical dataset.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section id="forms-section" class="forms-section">
+        
+        <div id="breast-cancer" class="disease-form-section">
+            <div class="form-header">
+                <h2>Breast Cancer Prediction</h2>
+                <button class="close-btn">&times;</button>
+            </div>
             <p class="subtitle">Based on cellular features from fine needle aspirate.</p>
             <form id="form-breast-cancer" class="glass-form">
-                <div class="input-group">
-                    <label for="bc-radius">Mean Radius</label>
-                    <input type="number" id="bc-radius" step="0.01" required placeholder="e.g., 17.99">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Mean Radius</label>
+                        <input type="number" id="bc-radius" step="0.01" required placeholder="17.99">
+                    </div>
+                    <div class="input-group">
+                        <label>Mean Texture</label>
+                        <input type="number" id="bc-texture" step="0.01" required placeholder="10.38">
+                    </div>
+                    <div class="input-group">
+                        <label>Mean Perimeter</label>
+                        <input type="number" id="bc-perimeter" step="0.01" required placeholder="122.8">
+                    </div>
+                    <div class="input-group">
+                        <label>Mean Area</label>
+                        <input type="number" id="bc-area" step="0.01" required placeholder="1001.0">
+                    </div>
+                    <div class="input-group full-width">
+                        <label>Mean Smoothness</label>
+                        <input type="number" id="bc-smoothness" step="0.0001" required placeholder="0.1184">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="bc-texture">Mean Texture</label>
-                    <input type="number" id="bc-texture" step="0.01" required placeholder="e.g., 10.38">
-                </div>
-                <div class="input-group">
-                    <label for="bc-perimeter">Mean Perimeter</label>
-                    <input type="number" id="bc-perimeter" step="0.01" required placeholder="e.g., 122.8">
-                </div>
-                <div class="input-group">
-                    <label for="bc-area">Mean Area</label>
-                    <input type="number" id="bc-area" step="0.01" required placeholder="e.g., 1001.0">
-                </div>
-                <div class="input-group">
-                    <label for="bc-smoothness">Mean Smoothness</label>
-                    <input type="number" id="bc-smoothness" step="0.0001" required placeholder="e.g., 0.1184">
-                </div>
-                <button type="submit" class="submit-btn">Predict</button>
+                <button type="submit" class="submit-btn">Run AI Prediction</button>
             </form>
             <div id="result-breast-cancer" class="result-card hidden"></div>
-        </section>
+        </div>
 
-        <section id="diabetes" class="disease-form-section">
-            <h2>Diabetes Prediction</h2>
+        <div id="diabetes" class="disease-form-section">
+            <div class="form-header">
+                <h2>Diabetes Prediction</h2>
+                <button class="close-btn">&times;</button>
+            </div>
             <p class="subtitle">Based on Pima Indians Diabetes Database features.</p>
             <form id="form-diabetes" class="glass-form">
-                <div class="input-group">
-                    <label for="diab-pregnancies">Pregnancies</label>
-                    <input type="number" id="diab-pregnancies" step="1" required placeholder="e.g., 6">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Pregnancies</label>
+                        <input type="number" id="diab-pregnancies" step="1" required placeholder="6">
+                    </div>
+                    <div class="input-group">
+                        <label>Glucose Level</label>
+                        <input type="number" id="diab-glucose" step="1" required placeholder="148">
+                    </div>
+                    <div class="input-group">
+                        <label>Blood Pressure</label>
+                        <input type="number" id="diab-bp" step="1" required placeholder="72">
+                    </div>
+                    <div class="input-group">
+                        <label>BMI</label>
+                        <input type="number" id="diab-bmi" step="0.1" required placeholder="33.6">
+                    </div>
+                    <div class="input-group full-width">
+                        <label>Age</label>
+                        <input type="number" id="diab-age" step="1" required placeholder="50">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="diab-glucose">Glucose Level</label>
-                    <input type="number" id="diab-glucose" step="1" required placeholder="e.g., 148">
-                </div>
-                <div class="input-group">
-                    <label for="diab-bp">Blood Pressure</label>
-                    <input type="number" id="diab-bp" step="1" required placeholder="e.g., 72">
-                </div>
-                <div class="input-group">
-                    <label for="diab-bmi">BMI</label>
-                    <input type="number" id="diab-bmi" step="0.1" required placeholder="e.g., 33.6">
-                </div>
-                <div class="input-group">
-                    <label for="diab-age">Age</label>
-                    <input type="number" id="diab-age" step="1" required placeholder="e.g., 50">
-                </div>
-                <button type="submit" class="submit-btn">Predict</button>
+                <button type="submit" class="submit-btn">Run AI Prediction</button>
             </form>
             <div id="result-diabetes" class="result-card hidden"></div>
-        </section>
+        </div>
 
-        <section id="heart-disease" class="disease-form-section">
-            <h2>Heart Disease Prediction</h2>
+        <div id="heart-disease" class="disease-form-section">
+            <div class="form-header">
+                <h2>Heart Disease Prediction</h2>
+                <button class="close-btn">&times;</button>
+            </div>
             <p class="subtitle">Based on Cleveland Heart Disease features.</p>
             <form id="form-heart-disease" class="glass-form">
-                <div class="input-group">
-                    <label for="hd-age">Age</label>
-                    <input type="number" id="hd-age" step="1" required placeholder="e.g., 63">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Age</label>
+                        <input type="number" id="hd-age" step="1" required placeholder="63">
+                    </div>
+                    <div class="input-group">
+                        <label>Sex (1=M, 0=F)</label>
+                        <input type="number" id="hd-sex" step="1" min="0" max="1" required placeholder="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Chest Pain (1-4)</label>
+                        <input type="number" id="hd-cp" step="1" min="1" max="4" required placeholder="3">
+                    </div>
+                    <div class="input-group">
+                        <label>Resting BP</label>
+                        <input type="number" id="hd-trestbps" step="1" required placeholder="145">
+                    </div>
+                    <div class="input-group full-width">
+                        <label>Serum Cholestoral</label>
+                        <input type="number" id="hd-chol" step="1" required placeholder="233">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="hd-sex">Sex (1=Male, 0=Female)</label>
-                    <input type="number" id="hd-sex" step="1" min="0" max="1" required placeholder="e.g., 1">
-                </div>
-                <div class="input-group">
-                    <label for="hd-cp">Chest Pain Type (1-4)</label>
-                    <input type="number" id="hd-cp" step="1" min="1" max="4" required placeholder="e.g., 3">
-                </div>
-                <div class="input-group">
-                    <label for="hd-trestbps">Resting Blood Pressure</label>
-                    <input type="number" id="hd-trestbps" step="1" required placeholder="e.g., 145">
-                </div>
-                <div class="input-group">
-                    <label for="hd-chol">Serum Cholestoral</label>
-                    <input type="number" id="hd-chol" step="1" required placeholder="e.g., 233">
-                </div>
-                <button type="submit" class="submit-btn">Predict</button>
+                <button type="submit" class="submit-btn">Run AI Prediction</button>
             </form>
             <div id="result-heart-disease" class="result-card hidden"></div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Lightweight 3D Tilt Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

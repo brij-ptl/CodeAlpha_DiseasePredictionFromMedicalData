@@ -1,29 +1,57 @@
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://127.0.0.1:8080';
 
-// Navigation Logic
-const navBtns = document.querySelectorAll('.nav-btn');
-const formSections = document.querySelectorAll('.disease-form-section');
+// Initialize VanillaTilt for 3D cards
+VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+});
 
-navBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons and sections
-        navBtns.forEach(b => b.classList.remove('active'));
-        formSections.forEach(s => s.classList.remove('active'));
+// UI Logic
+const cards = document.querySelectorAll('.tilt-card');
+const formsSection = document.getElementById('forms-section');
+const closeBtns = document.querySelectorAll('.close-btn');
+const formContainers = document.querySelectorAll('.disease-form-section');
+
+// Open Form Overlay when a card is clicked
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-target');
         
-        // Add active class to clicked button and corresponding section
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-target');
+        // Hide all forms first
+        formContainers.forEach(form => form.classList.remove('active'));
+        
+        // Show overlay and specific form
+        formsSection.classList.add('active');
         document.getElementById(targetId).classList.add('active');
     });
 });
 
-// Generic form handler
+// Close Form Overlay
+const closeOverlay = () => {
+    formsSection.classList.remove('active');
+    setTimeout(() => {
+        formContainers.forEach(form => {
+            form.classList.remove('active');
+            // Hide result cards too on close
+            const resultCard = form.querySelector('.result-card');
+            if(resultCard) resultCard.classList.add('hidden');
+        });
+    }, 400); // Wait for transition
+};
+
+closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeOverlay);
+});
+
+// Generic form handler for Predictions
 async function handleFormSubmit(e, endpoint, dataMapper, resultContainerId) {
     e.preventDefault();
     
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerText;
-    submitBtn.innerHTML = '<div class="loader"></div>';
+    submitBtn.innerHTML = '<div class="loader" style="width:20px;height:20px;border:3px solid #000;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;"></div>';
     submitBtn.disabled = true;
 
     const resultCard = document.getElementById(resultContainerId);
@@ -52,17 +80,17 @@ async function handleFormSubmit(e, endpoint, dataMapper, resultContainerId) {
         const probPct = (data.probability * 100).toFixed(1);
         
         resultCard.innerHTML = `
-            <div class="result-title">Prediction Result</div>
+            <div style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; letter-spacing: 1px; text-transform: uppercase;">AI Prediction Analysis</div>
             <div class="result-value ${statusClass}">${data.prediction}</div>
-            <div class="result-prob">Confidence: ${probPct}%</div>
+            <div style="font-size: 1.1rem; margin-top: 1rem; color: var(--accent-1);">Confidence Level: <strong>${probPct}%</strong></div>
         `;
         resultCard.classList.remove('hidden');
 
     } catch (error) {
         resultCard.innerHTML = `
-            <div class="result-title">Error</div>
-            <div class="result-value" style="color: var(--danger); font-size: 1.5rem;">${error.message}</div>
-            <div class="result-prob">Make sure backend is running and models are trained.</div>
+            <div style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Error Detected</div>
+            <div class="result-value" style="color: var(--danger); font-size: 1.5rem;">Connection Failed</div>
+            <div style="font-size: 0.9rem; margin-top: 1rem;">Make sure backend is running on port 8080.</div>
         `;
         resultCard.classList.remove('hidden');
     } finally {
