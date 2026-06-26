@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Predictor AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1>Disease Predictor <span class="highlight">AI</span></h1>
+            <p>Advanced predictive models using Machine Learning for early detection.</p>
+        </header>
+
+        <nav class="disease-selector">
+            <button class="nav-btn active" data-target="breast-cancer">Breast Cancer</button>
+            <button class="nav-btn" data-target="diabetes">Diabetes</button>
+            <button class="nav-btn" data-target="heart-disease">Heart Disease</button>
+        </nav>
+
+        <section id="breast-cancer" class="disease-form-section active">
+            <h2>Breast Cancer Prediction</h2>
+            <p class="subtitle">Based on cellular features from fine needle aspirate.</p>
+            <form id="form-breast-cancer" class="glass-form">
+                <div class="input-group">
+                    <label for="bc-radius">Mean Radius</label>
+                    <input type="number" id="bc-radius" step="0.01" required placeholder="e.g., 17.99">
+                </div>
+                <div class="input-group">
+                    <label for="bc-texture">Mean Texture</label>
+                    <input type="number" id="bc-texture" step="0.01" required placeholder="e.g., 10.38">
+                </div>
+                <div class="input-group">
+                    <label for="bc-perimeter">Mean Perimeter</label>
+                    <input type="number" id="bc-perimeter" step="0.01" required placeholder="e.g., 122.8">
+                </div>
+                <div class="input-group">
+                    <label for="bc-area">Mean Area</label>
+                    <input type="number" id="bc-area" step="0.01" required placeholder="e.g., 1001.0">
+                </div>
+                <div class="input-group">
+                    <label for="bc-smoothness">Mean Smoothness</label>
+                    <input type="number" id="bc-smoothness" step="0.0001" required placeholder="e.g., 0.1184">
+                </div>
+                <button type="submit" class="submit-btn">Predict</button>
+            </form>
+            <div id="result-breast-cancer" class="result-card hidden"></div>
+        </section>
+
+        <section id="diabetes" class="disease-form-section">
+            <h2>Diabetes Prediction</h2>
+            <p class="subtitle">Based on Pima Indians Diabetes Database features.</p>
+            <form id="form-diabetes" class="glass-form">
+                <div class="input-group">
+                    <label for="diab-pregnancies">Pregnancies</label>
+                    <input type="number" id="diab-pregnancies" step="1" required placeholder="e.g., 6">
+                </div>
+                <div class="input-group">
+                    <label for="diab-glucose">Glucose Level</label>
+                    <input type="number" id="diab-glucose" step="1" required placeholder="e.g., 148">
+                </div>
+                <div class="input-group">
+                    <label for="diab-bp">Blood Pressure</label>
+                    <input type="number" id="diab-bp" step="1" required placeholder="e.g., 72">
+                </div>
+                <div class="input-group">
+                    <label for="diab-bmi">BMI</label>
+                    <input type="number" id="diab-bmi" step="0.1" required placeholder="e.g., 33.6">
+                </div>
+                <div class="input-group">
+                    <label for="diab-age">Age</label>
+                    <input type="number" id="diab-age" step="1" required placeholder="e.g., 50">
+                </div>
+                <button type="submit" class="submit-btn">Predict</button>
+            </form>
+            <div id="result-diabetes" class="result-card hidden"></div>
+        </section>
+
+        <section id="heart-disease" class="disease-form-section">
+            <h2>Heart Disease Prediction</h2>
+            <p class="subtitle">Based on Cleveland Heart Disease features.</p>
+            <form id="form-heart-disease" class="glass-form">
+                <div class="input-group">
+                    <label for="hd-age">Age</label>
+                    <input type="number" id="hd-age" step="1" required placeholder="e.g., 63">
+                </div>
+                <div class="input-group">
+                    <label for="hd-sex">Sex (1=Male, 0=Female)</label>
+                    <input type="number" id="hd-sex" step="1" min="0" max="1" required placeholder="e.g., 1">
+                </div>
+                <div class="input-group">
+                    <label for="hd-cp">Chest Pain Type (1-4)</label>
+                    <input type="number" id="hd-cp" step="1" min="1" max="4" required placeholder="e.g., 3">
+                </div>
+                <div class="input-group">
+                    <label for="hd-trestbps">Resting Blood Pressure</label>
+                    <input type="number" id="hd-trestbps" step="1" required placeholder="e.g., 145">
+                </div>
+                <div class="input-group">
+                    <label for="hd-chol">Serum Cholestoral</label>
+                    <input type="number" id="hd-chol" step="1" required placeholder="e.g., 233">
+                </div>
+                <button type="submit" class="submit-btn">Predict</button>
+            </form>
+            <div id="result-heart-disease" class="result-card hidden"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
