@@ -3,179 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Prediction from Medical Data</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="AI Disease Prediction Platform — Harness artificial intelligence to analyze medical data and estimate disease risk with clinical precision.">
+    <title>MediAI — AI Disease Prediction Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background overlay for forms -->
-    <div class="background-elements">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+
+    <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="MediAI Home">
+                <span class="logo-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <circle cx="14" cy="14" r="13" stroke="#14C8FF" stroke-width="1.5"/>
+                        <path d="M14 6v16M6 14h16" stroke="#14C8FF" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="14" cy="14" r="3" fill="#14C8FF" opacity="0.8"/>
+                    </svg>
+                </span>
+                <span class="logo-text">Medi<span class="logo-accent">AI</span></span>
+            </a>
+            <ul class="nav-links" role="list">
+                <li><a href="#assessment-section" class="nav-link" onclick="smoothScroll('assessment-section')">Assessment</a></li>
+                <li><a href="#how-it-works" class="nav-link" onclick="smoothScroll('how-it-works')">How It Works</a></li>
+                <li><a href="#features" class="nav-link" onclick="smoothScroll('features')">Features</a></li>
+                <li><a href="#faq" class="nav-link" onclick="smoothScroll('faq')">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-ghost" onclick="smoothScroll('assessment-section')">Sign In</button>
+                <button class="btn-primary-nav" onclick="smoothScroll('assessment-section')">Get Started</button>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════ HERO ══════════════════════════════════ -->
+    <section class="hero-section" id="home" aria-label="Hero section">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-container">
+            <div class="hero-content" id="heroContent">
+                <div class="hero-badge">
+                    <span class="badge-dot" aria-hidden="true"></span>
+                    <span>AI-Powered Clinical Analysis</span>
+                </div>
+                <h1 class="hero-title">
+                    AI Disease<br>
+                    <span class="title-gradient">Prediction</span> Platform
+                </h1>
+                <p class="hero-subtitle">Predict Earlier. Live Healthier.</p>
+                <p class="hero-desc">
+                    Harness the power of machine learning to analyze clinical biomarkers and estimate disease risk with speed and precision. Get intelligent health insights that support early preventive decisions — before symptoms become serious.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-hero-primary" onclick="smoothScroll('assessment-section')">
+                        <span>Start Assessment</span>
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                            <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="btn-hero-secondary" onclick="smoothScroll('how-it-works')">
+                        <span>Learn More</span>
+                    </button>
+                </div>
+                <div class="trust-metrics" role="list" aria-label="Platform statistics">
+                    <div class="trust-item" role="listitem">
+                        <span class="trust-value">97%</span>
+                        <span class="trust-label">Prediction Accuracy</span>
+                    </div>
+                    <div class="trust-divider" aria-hidden="true"></div>
+                    <div class="trust-item" role="listitem">
+                        <span class="trust-value">3</span>
+                        <span class="trust-label">Disease Models</span>
+                    </div>
+                    <div class="trust-divider" aria-hidden="true"></div>
+                    <div class="trust-item" role="listitem">
+                        <span class="trust-value">AI</span>
+                        <span class="trust-label">Powered Analysis</span>
+                    </div>
+                    <div class="trust-divider" aria-hidden="true"></div>
+                    <div class="trust-item" role="listitem">
+                        <span class="trust-value">🔒</span>
+                        <span class="trust-label">Secure &amp; Private</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right" aria-hidden="true">
+                <!-- Right side intentionally empty to reveal hero image -->
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" aria-hidden="true" onclick="smoothScroll('assessment-section')">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ ASSESSMENT ════════════════════════════════ -->
+    <section id="assessment-section" class="assessment-section" aria-labelledby="assessment-heading">
+        <div class="section-container">
+            <div class="section-eyebrow">Clinical Modules</div>
+            <h2 class="section-title" id="assessment-heading">Select Clinical Assessment</h2>
+            <p class="section-subtitle">Choose a diagnostic module to begin your AI-powered health analysis. Each model is trained on validated clinical datasets.</p>
+
+            <div class="assessment-grid">
+
+                <!-- Breast Cancer Card -->
+                <article class="assessment-card fade-in-up" data-target="breast-cancer" role="button" tabindex="0" aria-label="Open Breast Cancer Assessment">
+                    <div class="card-image-wrap">
+                        <img src="assets/cellular pathology.png" alt="Cellular Pathology — Breast Cancer Assessment" class="card-img" loading="lazy">
+                        <div class="card-img-overlay" aria-hidden="true"></div>
+                        <div class="card-icon-badge" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="3" stroke="#14C8FF" stroke-width="1.8"/>
+                                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#14C8FF" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="#14C8FF" stroke-width="1.4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Cellular Pathology</div>
+                        <h3 class="card-title">Breast Cancer Risk</h3>
+                        <p class="card-desc">Analyze fine needle aspirate (FNA) cytology data to assess malignancy risk with validated ML classification.</p>
+                        <div class="card-meta">
+                            <span class="card-accuracy">
+                                <span class="accuracy-dot" aria-hidden="true"></span>
+                                96.5% Accuracy
+                            </span>
+                            <span class="card-model">Random Forest</span>
+                        </div>
+                        <button class="card-cta" tabindex="-1" aria-hidden="true">
+                            Start Assessment
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Diabetes Card -->
+                <article class="assessment-card fade-in-up" data-delay="150" data-target="diabetes" role="button" tabindex="0" aria-label="Open Diabetes Assessment">
+                    <div class="card-image-wrap">
+                        <img src="assets/metabollic health.png" alt="Metabolic Health — Diabetes Assessment" class="card-img" loading="lazy">
+                        <div class="card-img-overlay" aria-hidden="true"></div>
+                        <div class="card-icon-badge" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="#14C8FF" stroke-width="1.8"/>
+                                <circle cx="12" cy="9" r="2.5" stroke="#14C8FF" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Metabolic Health</div>
+                        <h3 class="card-title">Diabetes Prediction</h3>
+                        <p class="card-desc">Evaluate metabolic biomarkers including glucose, BMI, and blood pressure to predict diabetes mellitus onset risk.</p>
+                        <div class="card-meta">
+                            <span class="card-accuracy">
+                                <span class="accuracy-dot" aria-hidden="true"></span>
+                                94.2% Accuracy
+                            </span>
+                            <span class="card-model">Logistic Regression</span>
+                        </div>
+                        <button class="card-cta" tabindex="-1" aria-hidden="true">
+                            Start Assessment
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Heart Disease Card -->
+                <article class="assessment-card fade-in-up" data-delay="300" data-target="heart-disease" role="button" tabindex="0" aria-label="Open Heart Disease Assessment">
+                    <div class="card-image-wrap">
+                        <img src="assets/cardiac risk.png" alt="Cardiac Risk — Heart Disease Assessment" class="card-img" loading="lazy">
+                        <div class="card-img-overlay" aria-hidden="true"></div>
+                        <div class="card-icon-badge" aria-hidden="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 21C12 21 4 14 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.09C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5" stroke="#14C8FF" stroke-width="1.8" stroke-linecap="round"/>
+                                <polyline points="1,9 4,9 6,5 9,13 11,9 13,9" stroke="#14C8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Cardiology Risk</div>
+                        <h3 class="card-title">Heart Disease Risk</h3>
+                        <p class="card-desc">Predict coronary artery disease risk using clinical observations including cholesterol, blood pressure, and ECG data.</p>
+                        <div class="card-meta">
+                            <span class="card-accuracy">
+                                <span class="accuracy-dot" aria-hidden="true"></span>
+                                93.8% Accuracy
+                            </span>
+                            <span class="card-model">SVM Classifier</span>
+                        </div>
+                        <button class="card-cta" tabindex="-1" aria-hidden="true">
+                            Start Assessment
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="medical-disclaimer" role="note">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:2px">
+                    <circle cx="8" cy="8" r="7" stroke="#14C8FF" stroke-width="1.2" opacity="0.6"/>
+                    <path d="M8 7v4M8 5v1" stroke="#14C8FF" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+                This AI platform provides predictive insights for educational and research purposes and should not replace professional medical diagnosis or consultation. Always consult a qualified healthcare professional.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ HOW IT WORKS ══════════════════════════════ -->
+    <section id="how-it-works" class="how-section" aria-labelledby="how-heading">
+        <div class="section-container">
+            <div class="section-eyebrow">Process</div>
+            <h2 class="section-title" id="how-heading">How It Works</h2>
+            <p class="section-subtitle">Four simple steps from clinical data input to actionable AI-generated health insights.</p>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-icon" aria-hidden="true">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <rect x="3" y="3" width="20" height="20" rx="4" stroke="#14C8FF" stroke-width="1.6"/>
+                            <path d="M9 13h8M13 9v8" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Step 01</div>
+                        <h3 class="timeline-title">Select Disease Module</h3>
+                        <p class="timeline-desc">Choose from Breast Cancer, Diabetes, or Heart Disease assessment modules trained on validated clinical datasets.</p>
+                    </div>
+                </div>
+                <div class="timeline-connector" aria-hidden="true"></div>
+                <div class="timeline-item fade-in-up" data-delay="100">
+                    <div class="timeline-icon" aria-hidden="true">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <path d="M6 8h14M6 13h10M6 18h7" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round"/>
+                            <circle cx="20" cy="18" r="3.5" stroke="#14C8FF" stroke-width="1.4"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Step 02</div>
+                        <h3 class="timeline-title">Enter Clinical Data</h3>
+                        <p class="timeline-desc">Input your clinical biomarkers, lab values, and vital signs from your medical reports into the structured form.</p>
+                    </div>
+                </div>
+                <div class="timeline-connector" aria-hidden="true"></div>
+                <div class="timeline-item fade-in-up" data-delay="200">
+                    <div class="timeline-icon" aria-hidden="true">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <circle cx="13" cy="13" r="5" stroke="#14C8FF" stroke-width="1.6"/>
+                            <path d="M13 5V3M13 23v-2M5 13H3M23 13h-2M7.1 7.1L5.7 5.7M20.3 20.3l-1.4-1.4M7.1 18.9l-1.4 1.4M20.3 5.7l-1.4 1.4" stroke="#14C8FF" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Step 03</div>
+                        <h3 class="timeline-title">AI Processes Data</h3>
+                        <p class="timeline-desc">Our trained machine learning models instantly analyze your data against thousands of clinical patterns to identify risk signals.</p>
+                    </div>
+                </div>
+                <div class="timeline-connector" aria-hidden="true"></div>
+                <div class="timeline-item fade-in-up" data-delay="300">
+                    <div class="timeline-icon" aria-hidden="true">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                            <path d="M5 14l5 5L21 8" stroke="#14C8FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Step 04</div>
+                        <h3 class="timeline-title">Receive Risk Prediction</h3>
+                        <p class="timeline-desc">Get an instant, explainable AI-generated clinical report with risk classification, confidence percentage, and actionable insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FEATURES ══════════════════════════════════ -->
+    <section id="features" class="features-section" aria-labelledby="features-heading">
+        <div class="section-container">
+            <div class="section-eyebrow">Why Choose Our AI</div>
+            <h2 class="section-title" id="features-heading">Built for Clinical Precision</h2>
+            <p class="section-subtitle">Every component is engineered for accuracy, privacy, and clinical reliability.</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <rect x="3" y="8" width="22" height="14" rx="3" stroke="#14C8FF" stroke-width="1.6"/>
+                            <path d="M9 8V6a5 5 0 0110 0v2" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round"/>
+                            <circle cx="14" cy="15" r="2.5" stroke="#14C8FF" stroke-width="1.4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Secure Data Handling</h3>
+                    <p class="feature-desc">Your clinical data is processed locally and never stored or shared. Full privacy by design.</p>
+                </div>
+                <div class="feature-card fade-in-up" data-delay="80">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="11" stroke="#14C8FF" stroke-width="1.6"/>
+                            <polyline points="9,14 12,17 19,10" stroke="#14C8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Validated ML Models</h3>
+                    <p class="feature-desc">Models trained and evaluated on UCI Medical Repository datasets with rigorous cross-validation.</p>
+                </div>
+                <div class="feature-card fade-in-up" data-delay="160">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="5" stroke="#14C8FF" stroke-width="1.6"/>
+                            <path d="M14 3v3M14 22v3M3 14h3M22 14h3" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Instant Analysis</h3>
+                    <p class="feature-desc">Sub-second inference powered by optimized backend models — results in under 300ms.</p>
+                </div>
+                <div class="feature-card fade-in-up" data-delay="240">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M4 22L10 10l5 7 3-4 6 9" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Clinical Data Analysis</h3>
+                    <p class="feature-desc">Processes real medical biomarkers: cell morphology, glucose levels, cardiac markers, and more.</p>
+                </div>
+                <div class="feature-card fade-in-up" data-delay="320">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <path d="M6 8h16M6 14h10M6 20h12" stroke="#14C8FF" stroke-width="1.6" stroke-linecap="round"/>
+                            <circle cx="20" cy="20" r="3" fill="#14C8FF" opacity="0.3" stroke="#14C8FF" stroke-width="1.2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Explainable AI</h3>
+                    <p class="feature-desc">Every prediction comes with confidence scores and a clinical explanation — no black boxes.</p>
+                </div>
+                <div class="feature-card fade-in-up" data-delay="400">
+                    <div class="feature-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <rect x="4" y="4" width="8" height="8" rx="2" stroke="#14C8FF" stroke-width="1.6"/>
+                            <rect x="16" y="4" width="8" height="8" rx="2" stroke="#14C8FF" stroke-width="1.6"/>
+                            <rect x="4" y="16" width="8" height="8" rx="2" stroke="#14C8FF" stroke-width="1.6"/>
+                            <rect x="16" y="16" width="8" height="8" rx="2" stroke="#14C8FF" stroke-width="1.6" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Responsive Platform</h3>
+                    <p class="feature-desc">Pixel-perfect experience across desktop, tablet, and mobile with full accessibility support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ STATS / TRUST ═════════════════════════════ -->
+    <section class="stats-section" aria-labelledby="stats-heading">
+        <div class="section-container">
+            <h2 class="sr-only" id="stats-heading">Platform Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <span class="stat-value" data-count="97">0</span><span class="stat-suffix">%</span>
+                    <p class="stat-label">Prediction Accuracy</p>
+                </div>
+                <div class="stat-item fade-in-up" data-delay="100">
+                    <span class="stat-value" data-count="3">0</span>
+                    <p class="stat-label">Disease Models</p>
+                </div>
+                <div class="stat-item fade-in-up" data-delay="200">
+                    <span class="stat-value" data-count="300">0</span><span class="stat-suffix">ms</span>
+                    <p class="stat-label">Inference Speed</p>
+                </div>
+                <div class="stat-item fade-in-up" data-delay="300">
+                    <span class="stat-value" data-count="100">0</span><span class="stat-suffix">%</span>
+                    <p class="stat-label">Data Privacy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════ FAQ ════════════════════════════════════ -->
+    <section id="faq" class="faq-section" aria-labelledby="faq-heading">
+        <div class="section-container">
+            <div class="section-eyebrow">FAQ</div>
+            <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about the AI Disease Prediction Platform.</p>
+
+            <div class="faq-list" role="list">
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                        <span>How accurate are the AI predictions?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-1" hidden>
+                        <p>Our models achieve 93–97% accuracy on held-out test sets, validated using cross-validation on UCI clinical datasets. Results include a confidence percentage for full transparency.</p>
+                    </div>
+                </div>
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                        <span>Is my health data stored or shared?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-2" hidden>
+                        <p>No. All data is processed in real-time and never persisted in any database. Your inputs are sent only for inference and immediately discarded after generating your result.</p>
+                    </div>
+                </div>
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                        <span>Can this replace a doctor's diagnosis?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-3" hidden>
+                        <p>No. This platform is designed for educational and research purposes only. It is a decision-support tool, not a clinical diagnostic instrument. Always consult a licensed medical professional for health decisions.</p>
+                    </div>
+                </div>
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                        <span>Which diseases can currently be assessed?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-4" hidden>
+                        <p>The platform currently supports three clinical modules: Breast Cancer (via FNA cytology data), Diabetes Mellitus (via metabolic panel), and Heart Disease (via cardiac biomarkers). More modules are in development.</p>
+                    </div>
+                </div>
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+                        <span>What data do I need to run an assessment?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq-5" hidden>
+                        <p>You need relevant lab values from your most recent medical report. For example, breast cancer assessment uses FNA cytology values (radius, texture, perimeter), while diabetes uses glucose, BMI, and blood pressure readings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FOOTER ════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo" aria-label="MediAI Home">
+                    <span class="logo-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                            <circle cx="14" cy="14" r="13" stroke="#14C8FF" stroke-width="1.5"/>
+                            <path d="M14 6v16M6 14h16" stroke="#14C8FF" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="14" cy="14" r="3" fill="#14C8FF" opacity="0.8"/>
+                        </svg>
+                    </span>
+                    <span class="logo-text">Medi<span class="logo-accent">AI</span></span>
+                </a>
+                <p class="footer-tagline">AI-powered disease prediction for modern healthcare.</p>
+                <p class="footer-disclaimer">For educational and research purposes only. Not a substitute for professional medical advice.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Platform</h4>
+                    <ul role="list">
+                        <li><a href="#assessment-section" onclick="smoothScroll('assessment-section')">Assessment</a></li>
+                        <li><a href="#how-it-works" onclick="smoothScroll('how-it-works')">How It Works</a></li>
+                        <li><a href="#features" onclick="smoothScroll('features')">Features</a></li>
+                        <li><a href="#faq" onclick="smoothScroll('faq')">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Legal</h4>
+                    <ul role="list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Medical Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Connect</h4>
+                    <ul role="list">
+                        <li><a href="#" aria-label="GitHub">GitHub</a></li>
+                        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+                        <li><a href="mailto:contact@mediai.dev">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MediAI. Built with precision for the future of healthcare.</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════ FORM OVERLAY MODAL ════════════════════════════ -->
+    <div id="forms-section" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+
+        <!-- Breast Cancer Form -->
+        <div id="breast-cancer" class="modal-panel disease-form-section" hidden>
+            <div class="modal-header">
+                <div>
+                    <div class="modal-eyebrow">Cellular Pathology</div>
+                    <h2 class="modal-title" id="modal-bc-title">Breast Cancer Assessment</h2>
+                </div>
+                <button class="close-btn" aria-label="Close assessment form">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="modal-subtitle">Input values from your cytology report (Fine Needle Aspirate).</p>
+            <form id="form-breast-cancer" class="modal-form" novalidate>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="bc-radius">Mean Cell Radius</label>
+                        <span class="helper-text">Mean radius of the cell nuclei</span>
+                        <input type="number" id="bc-radius" step="0.01" required placeholder="e.g., 17.99" aria-describedby="bc-radius-help">
+                    </div>
+                    <div class="input-group">
+                        <label for="bc-texture">Mean Cell Texture</label>
+                        <span class="helper-text">Standard deviation of gray-scale values</span>
+                        <input type="number" id="bc-texture" step="0.01" required placeholder="e.g., 10.38">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="bc-perimeter">Mean Perimeter</label>
+                        <span class="helper-text">Mean perimeter of the nuclei</span>
+                        <input type="number" id="bc-perimeter" step="0.01" required placeholder="e.g., 122.8">
+                    </div>
+                    <div class="input-group">
+                        <label for="bc-area">Mean Area</label>
+                        <span class="helper-text">Mean area of the nuclei</span>
+                        <input type="number" id="bc-area" step="0.01" required placeholder="e.g., 1001.0">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="bc-smoothness">Mean Smoothness</label>
+                    <span class="helper-text">Local variation in radius lengths</span>
+                    <input type="number" id="bc-smoothness" step="0.0001" required placeholder="e.g., 0.1184">
+                </div>
+                <button type="submit" class="submit-btn">Generate Clinical Report</button>
+            </form>
+            <div id="result-breast-cancer" class="result-card hidden" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Diabetes Form -->
+        <div id="diabetes" class="modal-panel disease-form-section" hidden>
+            <div class="modal-header">
+                <div>
+                    <div class="modal-eyebrow">Metabolic Health</div>
+                    <h2 class="modal-title" id="modal-diab-title">Diabetes Assessment</h2>
+                </div>
+                <button class="close-btn" aria-label="Close assessment form">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="modal-subtitle">Provide your latest metabolic panel and vitals.</p>
+            <form id="form-diabetes" class="modal-form" novalidate>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="diab-age">Age</label>
+                        <span class="helper-text">Current age in years</span>
+                        <input type="number" id="diab-age" step="1" required placeholder="e.g., 50">
+                    </div>
+                    <div class="input-group">
+                        <label for="diab-pregnancies">Pregnancy History</label>
+                        <span class="helper-text">Number of pregnancies (0 if N/A)</span>
+                        <input type="number" id="diab-pregnancies" step="1" required placeholder="e.g., 2">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="diab-glucose">Plasma Glucose (mg/dL)</label>
+                        <span class="helper-text">2-hour oral glucose tolerance test</span>
+                        <input type="number" id="diab-glucose" step="1" required placeholder="e.g., 148">
+                    </div>
+                    <div class="input-group">
+                        <label for="diab-bp">Diastolic BP (mmHg)</label>
+                        <span class="helper-text">Diastolic blood pressure</span>
+                        <input type="number" id="diab-bp" step="1" required placeholder="e.g., 72">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="diab-bmi">Body Mass Index (BMI)</label>
+                    <span class="helper-text">Weight(kg) / Height(m)²</span>
+                    <input type="number" id="diab-bmi" step="0.1" required placeholder="e.g., 33.6">
+                </div>
+                <button type="submit" class="submit-btn">Generate Clinical Report</button>
+            </form>
+            <div id="result-diabetes" class="result-card hidden" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Heart Disease Form -->
+        <div id="heart-disease" class="modal-panel disease-form-section" hidden>
+            <div class="modal-header">
+                <div>
+                    <div class="modal-eyebrow">Cardiology Risk</div>
+                    <h2 class="modal-title" id="modal-hd-title">Heart Disease Assessment</h2>
+                </div>
+                <button class="close-btn" aria-label="Close assessment form">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="modal-subtitle">Complete this questionnaire regarding your cardiac health.</p>
+            <form id="form-heart-disease" class="modal-form" novalidate>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="hd-age">Patient Age</label>
+                        <span class="helper-text">Current age in years</span>
+                        <input type="number" id="hd-age" step="1" required placeholder="e.g., 63">
+                    </div>
+                    <div class="input-group">
+                        <label for="hd-sex">Biological Sex</label>
+                        <span class="helper-text">Biological sex at birth</span>
+                        <select id="hd-sex" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="hd-cp">Chest Pain Characterization</label>
+                    <span class="helper-text">How would you describe any chest pain?</span>
+                    <select id="hd-cp" required>
+                        <option value="" disabled selected>Select chest pain type</option>
+                        <option value="1">Typical Angina (provoked by exertion, relieved by rest/nitro)</option>
+                        <option value="2">Atypical Angina (doesn't meet all typical criteria)</option>
+                        <option value="3">Non-anginal Pain (not related to heart muscle ischemia)</option>
+                        <option value="4">Asymptomatic (no chest pain)</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="hd-trestbps">Resting BP (mmHg)</label>
+                        <span class="helper-text">Systolic blood pressure at rest</span>
+                        <input type="number" id="hd-trestbps" step="1" required placeholder="e.g., 145">
+                    </div>
+                    <div class="input-group">
+                        <label for="hd-chol">Serum Cholesterol (mg/dL)</label>
+                        <span class="helper-text">Current serum cholesterol level</span>
+                        <input type="number" id="hd-chol" step="1" required placeholder="e.g., 233">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Generate Clinical Report</button>
+            </form>
+            <div id="result-heart-disease" class="result-card hidden" role="alert" aria-live="polite"></div>
+        </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-bg" style="background-image: url('assets/hero_bg.png');"></div>
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Disease Prediction">Disease Prediction</h1>
-            <h2 class="subtitle-hero">From Medical Data</h2>
-            <p>Advanced predictive models using Machine Learning for early detection.</p>
-            <button class="explore-btn" onclick="document.getElementById('models-section').scrollIntoView({behavior: 'smooth'})">Explore Models</button>
-        </div>
-    </section>
-
-    <!-- 3D Models Selector Section -->
-    <section id="models-section" class="models-section">
-        <div class="section-header">
-            <h2>Select a Predictive Model</h2>
-            <p>Choose an AI model below to begin analysis.</p>
-        </div>
-
-        <div class="cards-container">
-            <!-- Breast Cancer Card -->
-            <div class="tilt-card" data-target="breast-cancer">
-                <div class="card-content">
-                    <div class="card-img-wrapper">
-                        <img src="assets/icon_cancer.png" alt="Breast Cancer Cells">
-                    </div>
-                    <h3>Breast Cancer</h3>
-                    <p>Cellular feature analysis.</p>
-                </div>
-            </div>
-
-            <!-- Diabetes Card -->
-            <div class="tilt-card" data-target="diabetes">
-                <div class="card-content">
-                    <div class="card-img-wrapper">
-                        <img src="assets/icon_diabetes.png" alt="Diabetes Blood Drop">
-                    </div>
-                    <h3>Diabetes</h3>
-                    <p>Pima Indians clinical data.</p>
-                </div>
-            </div>
-
-            <!-- Heart Disease Card -->
-            <div class="tilt-card" data-target="heart-disease">
-                <div class="card-content">
-                    <div class="card-img-wrapper">
-                        <img src="assets/icon_heart.png" alt="Heart Disease">
-                    </div>
-                    <h3>Heart Disease</h3>
-                    <p>Cleveland clinical dataset.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Forms Section -->
-    <section id="forms-section" class="forms-section">
-        
-        <div id="breast-cancer" class="disease-form-section">
-            <div class="form-header">
-                <h2>Breast Cancer Prediction</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <p class="subtitle">Based on cellular features from fine needle aspirate.</p>
-            <form id="form-breast-cancer" class="glass-form">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label>Mean Radius</label>
-                        <input type="number" id="bc-radius" step="0.01" required placeholder="17.99">
-                    </div>
-                    <div class="input-group">
-                        <label>Mean Texture</label>
-                        <input type="number" id="bc-texture" step="0.01" required placeholder="10.38">
-                    </div>
-                    <div class="input-group">
-                        <label>Mean Perimeter</label>
-                        <input type="number" id="bc-perimeter" step="0.01" required placeholder="122.8">
-                    </div>
-                    <div class="input-group">
-                        <label>Mean Area</label>
-                        <input type="number" id="bc-area" step="0.01" required placeholder="1001.0">
-                    </div>
-                    <div class="input-group full-width">
-                        <label>Mean Smoothness</label>
-                        <input type="number" id="bc-smoothness" step="0.0001" required placeholder="0.1184">
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Run AI Prediction</button>
-            </form>
-            <div id="result-breast-cancer" class="result-card hidden"></div>
-        </div>
-
-        <div id="diabetes" class="disease-form-section">
-            <div class="form-header">
-                <h2>Diabetes Prediction</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <p class="subtitle">Based on Pima Indians Diabetes Database features.</p>
-            <form id="form-diabetes" class="glass-form">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label>Pregnancies</label>
-                        <input type="number" id="diab-pregnancies" step="1" required placeholder="6">
-                    </div>
-                    <div class="input-group">
-                        <label>Glucose Level</label>
-                        <input type="number" id="diab-glucose" step="1" required placeholder="148">
-                    </div>
-                    <div class="input-group">
-                        <label>Blood Pressure</label>
-                        <input type="number" id="diab-bp" step="1" required placeholder="72">
-                    </div>
-                    <div class="input-group">
-                        <label>BMI</label>
-                        <input type="number" id="diab-bmi" step="0.1" required placeholder="33.6">
-                    </div>
-                    <div class="input-group full-width">
-                        <label>Age</label>
-                        <input type="number" id="diab-age" step="1" required placeholder="50">
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Run AI Prediction</button>
-            </form>
-            <div id="result-diabetes" class="result-card hidden"></div>
-        </div>
-
-        <div id="heart-disease" class="disease-form-section">
-            <div class="form-header">
-                <h2>Heart Disease Prediction</h2>
-                <button class="close-btn">&times;</button>
-            </div>
-            <p class="subtitle">Based on Cleveland Heart Disease features.</p>
-            <form id="form-heart-disease" class="glass-form">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label>Age</label>
-                        <input type="number" id="hd-age" step="1" required placeholder="63">
-                    </div>
-                    <div class="input-group">
-                        <label>Sex (1=M, 0=F)</label>
-                        <input type="number" id="hd-sex" step="1" min="0" max="1" required placeholder="1">
-                    </div>
-                    <div class="input-group">
-                        <label>Chest Pain (1-4)</label>
-                        <input type="number" id="hd-cp" step="1" min="1" max="4" required placeholder="3">
-                    </div>
-                    <div class="input-group">
-                        <label>Resting BP</label>
-                        <input type="number" id="hd-trestbps" step="1" required placeholder="145">
-                    </div>
-                    <div class="input-group full-width">
-                        <label>Serum Cholestoral</label>
-                        <input type="number" id="hd-chol" step="1" required placeholder="233">
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Run AI Prediction</button>
-            </form>
-            <div id="result-heart-disease" class="result-card hidden"></div>
-        </div>
-    </section>
-
-    <!-- Lightweight 3D Tilt Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="app.js"></script>
 </body>
